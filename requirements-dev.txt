@@ -1,0 +1,8 @@
+-r requirements.txt
+pytest
+pre-commit
+flake8
+freezegun
+pip-tools>=5.4.0
+black==22.12.0
+pyinstaller>=4.0,<5.0; sys_platform == 'win32'

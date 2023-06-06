@@ -1,0 +1,30 @@
+%YAML 1.1
+---
+version: v2
+use-firefox-containers: true
+use-chrome-multiple-windows: false
+use-chrome-multiple-windows-default:
+set-browser:
+use-keyring: true
+loglvl: info
+identities:
+  bmw:
+    region: eu-west-1
+    aws-profiles:
+      test1:
+        account: '123456789012'
+        role: CDHX-DevOps
+        region: eu-west-1
+      octal:
+        account: '012345670123'
+        role: CDHX-DevOps
+        region: eu-west-1
+      test2:
+        account: '234567890123'
+        role: CDHX-DevOps
+        region: eu-west-1
+      test2_subrole:
+        account: '234567890123'
+        role: CDHX-DevOps
+        region: eu-west-1
+        subrole: arn:aws:iam::234567890123:role/subrole

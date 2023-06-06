@@ -1,0 +1,78 @@
+default_language_version:
+  python: python3
+repos:
+  - repo: local
+    hooks:
+      - id: prepend-ticket-to-commit-message
+        name: prepend ticket to commit message
+        entry: bin/prepend_ticket_to_commit_message.py
+        stages: [prepare-commit-msg]
+        language: script
+        always_run: true
+  - repo: https://github.com/asottile/reorder_python_imports
+    rev: v2.3.5
+    hooks:
+      - id: reorder-python-imports
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        args: ["-l 120"]
+        exclude: |
+          (?x)(
+              ^bin/
+          )
+  - repo: https://github.com/pycqa/flake8
+    rev: 3.8.4
+    hooks:
+      - id: flake8
+        args: ["--extend-ignore=T001"]
+        exclude: |
+          (?x)(
+              ^bin/|
+              ^build/|
+              ^dist/|
+              ^out/
+          )
+        additional_dependencies:
+          - importlib-metadata<5.0  # remove after upgrading flake8
+          - flake8_formatter_abspath
+          - flake8-print
+          - git+https://github.com/PyCQA/pycodestyle@2.6.0#egg=pycodestyle
+          - git+https://github.com/PyCQA/pyflakes@2.2.0#egg=pyflakes
+        stages: [commit, merge-commit]
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: python -m pytest
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [commit, merge-commit]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v0.991'
+    hooks:
+      - id: mypy
+        args:
+          - --disallow-untyped-defs
+        exclude: ^bin/.*$
+        additional_dependencies:
+          - types-setuptools
+          - types-click-spinner
+          - types-requests
+          - types-tabulate
+          - types-beautifulsoup4
+          - types-botocore
+          - boto3-stubs
+          - beautifulsoup4
+          - botocore
+          - boto3
+          - click
+          - pytest
+          - polling2
+          - semver
+          - ruamel-yaml
+          - keyring
+          - aws-requests-auth

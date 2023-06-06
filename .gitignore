@@ -1,0 +1,16 @@
+**/__pycache__
+.eggs/
+credentials
+.vscode
+.envrc
+cdh.egg-info/
+.idea
+**/.DS_Store
+build
+dist
+out/
+venv/
+infrastructure/.terraform/
+infrastructure/terraform.tfstate.backup
+VERSION-BINARY
+cdh.spec

@@ -1,0 +1,15 @@
+region: eu-west-1
+use-firefox-containers: true
+
+aws-profiles:
+ "123456789012":
+   CDHX-DevOps: test1
+ "012345670123":
+   CDHX-DevOps: octal
+ "234567890123":
+   CDHX-DevOps:
+      - name: test2
+        region: eu-west-1
+      - name: test2_subrole
+        subrole: arn:aws:iam::234567890123:role/subrole
+
