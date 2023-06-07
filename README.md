@@ -2,7 +2,7 @@ Up-to-date docs: https://data.bmw.cloud/docs/getting_started/x_0_cdh_cli.html .
 Frequently asked questions: [Questions](https://atc.bmwgroup.net/confluence/questions/topics/1190035861/cdh-cli)
 
 ## Cloud Data Hub CDH CLI
-
+test
 The Python-based command-line interface (CLI) helps to
 * select a suitable account/environment from the CDH,
 * generate and persist AWS credentials via Security Token Service (i.e. `access_key`, `secret_key`, `security_token`), and
