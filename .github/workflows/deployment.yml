@@ -162,13 +162,13 @@ jobs:
       environment: prod
       base_url: https://api.cdh-oss.bmw.cloud/
 
-  notify-teams:
-    needs: [set_prefix, dev_functional_tests, prod_functional_tests]
-    if: always()
-    uses: ./.github/workflows/reusable_notify_teams.yml
-    with:
-      successful: ${{ needs.set_prefix.outputs.prefix == '' && needs.prod_functional_tests.outputs.job_status == 'success' || needs.set_prefix.outputs.prefix
-        != '' && needs.dev_functional_tests.outputs.job_status == 'success' }}
-    secrets:
-      teams_alert_url: ${{ needs.set_prefix.outputs.prefix == '' && secrets.TEAMS_PROD_ALERT || secrets.TEAMS_DEV_ALERT }}
-      teams_url: ${{ needs.set_prefix.outputs.prefix == '' && secrets.TEAMS_PROD || secrets.TEAMS_DEV }}
+  # notify-teams:
+  #   needs: [set_prefix, dev_functional_tests, prod_functional_tests]
+  #   if: always()
+  #   uses: ./.github/workflows/reusable_notify_teams.yml
+  #   with:
+  #     successful: ${{ needs.set_prefix.outputs.prefix == '' && needs.prod_functional_tests.outputs.job_status == 'success' || needs.set_prefix.outputs.prefix
+  #       != '' && needs.dev_functional_tests.outputs.job_status == 'success' }}
+  #   secrets:
+  #     teams_alert_url: ${{ needs.set_prefix.outputs.prefix == '' && secrets.TEAMS_PROD_ALERT || secrets.TEAMS_DEV_ALERT }}
+  #     teams_url: ${{ needs.set_prefix.outputs.prefix == '' && secrets.TEAMS_PROD || secrets.TEAMS_DEV }}
