@@ -7,7 +7,7 @@ cdh.egg-info/
 .idea
 **/.DS_Store
 build
-dist
+dist1
 out/
 venv/
 infrastructure/.terraform/
