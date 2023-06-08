@@ -146,21 +146,21 @@ jobs:
       base_url: https://${{ needs.set_prefix.outputs.prefix == '' && 'api-dev.cdh-oss.bmw.cloud/' || format('{0}.api-dev.cdh-oss.bmw.cloud/', needs.set_prefix.outputs.prefix)}}
       prefix: ${{ needs.set_prefix.outputs.prefix }}
 
-  prod_deployment:
-    needs: [set_prefix, dev_functional_tests]
-    uses: ./.github/workflows/reusable_deployment.yml
-    if: always() && needs.set_prefix.outputs.prefix == '' && needs.dev_functional_tests.result == 'success'
-    with:
-      environment: prod
-      purposes: '["api","resources","test"]'
+  # prod_deployment:
+  #   needs: [set_prefix, dev_functional_tests]
+  #   uses: ./.github/workflows/reusable_deployment.yml
+  #   if: always() && needs.set_prefix.outputs.prefix == '' && needs.dev_functional_tests.result == 'success'
+  #   with:
+  #     environment: prod
+  #     purposes: '["api","resources","test"]'
 
-  prod_functional_tests:
-    needs: [set_prefix, prod_deployment]
-    if: always() && needs.set_prefix.outputs.prefix == '' && needs.prod_deployment.result == 'success'
-    uses: ./.github/workflows/reusable_functional_tests.yml
-    with:
-      environment: prod
-      base_url: https://api.cdh-oss.bmw.cloud/
+  # prod_functional_tests:
+  #   needs: [set_prefix, prod_deployment]
+  #   if: always() && needs.set_prefix.outputs.prefix == '' && needs.prod_deployment.result == 'success'
+  #   uses: ./.github/workflows/reusable_functional_tests.yml
+  #   with:
+  #     environment: prod
+  #     base_url: https://api.cdh-oss.bmw.cloud/
 
   notify-teams:
     needs: [set_prefix, dev_functional_tests, prod_functional_tests]
