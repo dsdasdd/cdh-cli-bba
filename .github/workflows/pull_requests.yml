@@ -26,6 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+        
           python -m  pip install -r src/requirements-dev.txt -r src/requirements.txt
           python -m pip install src/cdh_core
           python -m pip install src/lambdas/cdh_core_api

@@ -16,6 +16,7 @@ from typing import Callable
 from typing import List
 from typing import Optional
 print("1111111111111111111")
+print("232323232323232323232")
 import click
 import requests
 import semver
