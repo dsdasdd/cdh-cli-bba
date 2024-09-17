@@ -7,10 +7,11 @@ cdh.egg-info/
 .idea
 **/.DS_Store
 build
-dist
+dist1
 out/
 venv/
 infrastructure/.terraform/
 infrastructure/terraform.tfstate.backup
 VERSION-BINARY
 cdh.spec
+.github/*/**

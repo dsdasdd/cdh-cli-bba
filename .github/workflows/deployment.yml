@@ -1,0 +1,23 @@
+---
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+      - prefix/*
+
+jobs:
+  set_prefix:
+    runs-on: [self-hosted, ubuntu-latest]
+    outputs:
+      prefix: ${{ steps.set-parameters.outputs.prefix }}
+    steps:
+      - name: Set terraform parameters
+        id: set-parameters
+        run: |
+          if [[ "${GITHUB_REF#refs/heads/}" == "prefix/"* ]]; then
+            echo "prefix=${GITHUB_REF#refs/heads/prefix/}" >> $GITHUB_OUTPUT
+          else
+            echo "prefix=" >> $GITHUB_OUTPUT
+          fi
